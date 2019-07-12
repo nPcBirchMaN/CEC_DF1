@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Valores_timpuesto__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISPICKVAL ( Tipo_de_impuesto__c , &quot;zero&quot; ), 0.0,
+
+IF(ISPICKVAL ( Tipo_de_impuesto__c , &quot;superreduit&quot; ), 0.04 ,
+
+IF(ISPICKVAL ( Tipo_de_impuesto__c , &quot;reduit&quot; ), 0.10,
+
+IF(ISPICKVAL( Tipo_de_impuesto__c , &quot;standard&quot; ), 0.21, 0))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Valores Tipos de impuesto</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

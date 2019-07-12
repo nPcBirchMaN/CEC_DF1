@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vencimientos_Compacto</fullName>
+    <fields>Name</fields>
+    <fields>Referencia__c</fields>
+    <fields>N_mero_de_pago__c</fields>
+    <fields>Importe_Total__c</fields>
+    <fields>Cobrada__c</fields>
+    <fields>Fecha_de_pago__c</fields>
+    <fields>Impagada__c</fields>
+    <label>Vencimientos Compacto</label>
+</CompactLayout>

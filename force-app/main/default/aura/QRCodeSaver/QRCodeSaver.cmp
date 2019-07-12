@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global">
+    <aura:attribute name="iframeUrl" type="String" />
+    <aura:attribute name="sobjecttype" type="String" default="{!v.sObjectName}"/>
+    <aura:attribute name="customerId" type="String" default="{!v.simpleRecord.Id_Cliente__c}"/>
+    <aura:attribute name="width" type="String" default="300px" />
+    <aura:attribute name="height" type="String" default="300px"/>
+	<aura:attribute name="lcHost" type="String" />
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+    
+    <force:recordData aura:id="recordLoader"
+      recordId="{!v.recordId}"
+      targetFields="{!v.simpleRecord}"
+      targetError="{!v.recordError}"
+      recordUpdated="{!c.handleUpdate}"
+      layoutType="FULL"
+      />
+    
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> --> 		<!-- Replaced with recordUpdated from LDS -->
+    
+    <iframe src="{!v.iframeUrl}"
+            width="{!v.width}"
+            height="{!v.height}" style="visibility:hidden" />
+</aura:component>

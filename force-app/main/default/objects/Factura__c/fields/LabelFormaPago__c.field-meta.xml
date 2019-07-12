@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LabelFormaPago__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( Tipo_de_pago__c , &#39;Domiciliación bancaria&#39;, &#39;Domiciliació bancària&#39;, &#39;Efectivo&#39;, &#39;Efectiu&#39;,&#39;Tarjeta&#39;,&#39;Targeta&#39;, &#39;Transferencia&#39;, &#39;Transferència&#39;, &#39;Web&#39;, &#39;Web&#39;,&#39;&#39;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>LabelFormaPago</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

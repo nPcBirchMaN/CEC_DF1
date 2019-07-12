@@ -1,0 +1,40 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="PedidosProductoController">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:attribute name="linPedido" type="sObject[]"/>
+    <aura:attribute name="total" type="String"/>
+    <div>
+        <h1 class="slds-badge">{!'Total vendidos: '+v.total}</h1>
+        <br/>
+        <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+            <thead>
+                <tr class="slds-text-title--caps">
+                    <th aria-sort="ascending"  scope="col">Núm. Pedido</th>
+                    <th aria-sort="none" scope="col">Tipo</th>
+                    <th aria-sort="none" scope="col">Etapa</th>
+                    <th aria-sort="none" scope="col">Cuenta</th>
+                    <th aria-sort="none" scope="col">Forma de pago</th>
+                    <th aria-sort="none" scope="col">Cantidad</th>
+                    <th aria-sort="none" scope="col">Precio</th>
+                    <th aria-sort="none" scope="col">Asistente</th>
+                    <th aria-sort="none" scope="col">Anulado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.linPedido}" var="lPed">
+                    <tr class="slds-text-title--caps">
+                        <td class="slds-truncate"><lightning:formattedUrl value="{!'/'+lPed.orderId}" label="{!lPed.orderNumber}" target="_blank" /></td>
+                        <td class="slds-truncate">{!lPed.oppOrd}</td>
+                        <td class="slds-truncate">{!lPed.etapa}</td>
+                        <td class="slds-truncate"><lightning:formattedUrl value="{!'/'+lPed.accountId}" label="{!lPed.accountName}" target="_blank" /></td>
+                        <td class="slds-truncate">{!lPed.formaPago}</td>
+                        <td class="slds-truncate">{!lPed.quantity}</td>
+                        <td class="slds-truncate">{!lPed.unitPrice}</td>
+                        <td class="slds-truncate"><lightning:formattedUrl value="{!lPed.asistenteId == null ? '' : '/'+lPed.asistenteId}" label="{!lPed.asistente}" target="_blank" /></td>
+                    	<td><lightning:input type="checkbox" checked="{!lPed.anulado}" disabled="true" /></td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

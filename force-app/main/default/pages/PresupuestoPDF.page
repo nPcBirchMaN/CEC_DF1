@@ -1,0 +1,160 @@
+<apex:page standardController="Opportunity" renderAs="pdf" extensions="ExtensionPresupuestoPDF">
+    <div style="font-size:14px;font-family:sans-serif;">
+        <div >  
+            
+            <apex:image url="https://cec.cat/wp-content/uploads/2018/07/CEC-Logo.png" width="29%" height="29%"/> 
+        </div>
+        <div >       
+            <table style="margin-left:25px;margin-top:10px;margin-bottom:5px;"> 
+                <tr>
+                    <td style="width:800px;"> </td>
+                    <td style="width:300px;"> <apex:outputPanel rendered="{!Opportunity.Account.Cuenta_empresa__c}">{!Opportunity.Account.Name} </apex:outputPanel>{!Opportunity.Account.FirstName}&nbsp;{!Opportunity.Account.LastName}</td>
+                </tr>
+                <tr>     
+                    <td></td>
+                    <td>{!Opportunity.Account.Direcci_n__c}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    
+                </tr>     
+            </table>
+        </div>
+        <div>
+            <table style="margin-left:25px;margin-top:30px;">
+                <tr>
+                    <td style="witdth:650px;">Paradís, 10</td>
+                    <td></td>
+                    <td><u><apex:outputPanel rendered="{!Opportunity.Account.Cuenta_empresa__c}">CIF&nbsp;{!Opportunity.Account.N_mero_de_CIF__c}</apex:outputPanel>{!Opportunity.Account.Tipo_de_documento__c}&nbsp;{!Opportunity.Account.N_mero_de_Documento__pc}</u></td>
+                </tr>
+                <tr>
+                    <td>08002 BARCELONA</td>
+                </tr>
+                <tr>
+                    <td>__________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>933 152 311</td>
+                </tr>
+            </table>
+        </div>
+        <div style="margin-left:25px;">
+            <table>
+                <tr>
+                    <td style="width:455px">NIF G08944209</td>
+                    <td>
+                        <apex:outputText value="{0,date,dd'/'MM'/'yyy }">
+                            Barcelona,&nbsp;<apex:param value="{! presupuestoDate }" /> 
+                        </apex:outputText></td>
+                </tr>
+                <tr>
+                    <td style="width:455px"><b>PRESSUPOST</b></td>
+                </tr>
+            </table>
+        </div>
+        <p style="text-align:center;">
+            ___________________________________________________________________________________
+           
+          
+        </p>
+       
+<div style="margin-left:25px;">
+    
+        </div>
+ 
+        <div style="margin-left:20px;padding:10px;padding-bottom:10px;">
+            
+            <Table>
+                <tr>
+                    <th style="width:650px;">CONCEPTE</th>
+                    <th style="width:200px;text-align:center;">QUANTITAT</th>
+                    <th style="width:200px;text-align:center;">P. UNITARI</th> 
+                    <th style="width:200px;text-align:center;">IMPOSTOS</th> 
+                    <th style="width:200px;text-align:center;">P. TOTAL</th>
+                </tr>
+                <apex:repeat value="{!oliEnvelopeList}" var="linea">
+                    <tr>
+                        <td>
+                        	{!linea.Name}
+                        </td>
+                        <td style="width:200px;text-align:center;">
+                        	{!linea.quantity}
+                        </td>
+                        <td style="width:200px;text-align:center;">
+                        	{!linea.unitPrice}
+                        </td> 
+                        <td style="width:200px;text-align:center;"> 
+                        	IVA {!linea.tax}%
+                        </td> 
+                        <td style="width:200px;text-align:center;">
+                            {!linea.total}
+                        </td>
+                    </tr>
+                </apex:repeat>  
+                
+            </Table>
+            <div style="margin-top:20px;">
+                <table>
+                    <tr>
+                        <td>{!Opportunity.Nombre_fotograf_a__c}</td>
+                    </tr>
+                    <tr>
+                        <td>{!Opportunity.Nombre_exposici_n__c}</td>
+                    </tr>
+                </table>  
+            </div>
+            
+        </div>
+        <p style="text-align:right;margin-right:25px">
+            _____________________________________
+        </p>
+        <div style="margin-left:390px;margin-right:30px">
+            <table >
+                <tr>
+                    <td style="width:110px;"></td>
+                    <td style="width:110px;">TOTAL B.I.</td>
+                    <td style="width:50px;text-align:right;">{! formated_baseImponible }&nbsp;€</td>
+                </tr> 
+                <apex:repeat value="{! orderedBIList }" var="item"> 
+                    <apex:outputPanel rendered="{!item.items}">
+                        <tr>
+                            <td style="width:110px;">Base&nbsp;{!item.formated_bImponible}&nbsp;€</td>
+                            <td style="width:110px;">IVA {!item.iva}% <apex:outputText rendered="{!item.iva == '0'}" value="*"/></td>
+                            <td style="width:50px;text-align:right;">{!item.formated_total}&nbsp;€</td>
+                        </tr>
+                    </apex:outputPanel>
+                </apex:repeat>
+                <tr>
+                    <td style="width:110px;"></td>
+                    <th style="width:110px;font-size:16px;padding-top:7px;">TOTAL</th>
+                    <th style="width:50px;text-align:right;font-size:16px;padding-top:7px;">{!formated_total}&nbsp;€</th>
+                </tr>
+            </table>         
+        </div>
+        <div style="margin-top:10px;margin-left:50px">
+            <apex:outputPanel rendered="{!bMap['0% Tasa Cero'].items}">
+                <p>
+                    {!$Label.LeyExentoIVA}
+                </p>
+            </apex:outputPanel>       
+        </div>
+        <div>
+            <table style="margin-top:10px;margin-left:50px;">
+                <apex:outputPanel rendered="{! NOT(ISBLANK(Opportunity.Comentarios__c))}">
+                    <tr>
+                        <th >COMENTARIS:</th>
+                    </tr>
+                    <tr>
+                        <td ><apex:outputText value="{!Opportunity.Comentarios__c}" escape="false"/></td>
+                    </tr>
+                </apex:outputPanel>
+            </table>
+        </div> 
+    </div>
+    
+    <div style="font-size:11px;margin-left:10px;marign-top:20px;font-family:sans-serif;">
+        <p>
+            De conformitat amb allò que estableix la Llei Orgànica 15/1999, l'informem que les seves dades seran incorporades a un fitcher informatizat sota la responsabilitat del CENTRE EXCURSIONISTA DE CATALUNYA, amb la finalitat de poder atendre els compromisos derivats de la relació que mantenim amb vosté.<br/>Pot exercir el seu dret d'accés, cancel.lació i oposició mitjançant un escrit a la nostra adreça:<br/>carrer Paradís núm. 10 08002 BARCELONA
+        </p>
+    </div>
+</apex:page>

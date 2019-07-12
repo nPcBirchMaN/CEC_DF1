@@ -1,0 +1,196 @@
+<apex:page standardController="Factura__c" extensions="ExtensionFacturaPDF" renderAs="pdf">
+    <div style="margin-left:-11px;margin-top:-50px;margin-bottom:10px;">
+        
+        <div style="margin-left:40px;margin-bottom:10px;">
+            
+            
+            <div >  
+                
+                <apex:image url="https://cec.cat/wp-content/uploads/2018/07/CEC-Logo.png" width="28%"/> 
+            </div>   
+            
+            
+            <div>
+                <table style="margin-left:37px;margin-bottom:10px; text-align:center">
+                    <tr>
+                        <td>Paradís, 10</td>
+                    </tr>
+                    <tr>
+                        <td>08002 Barcelona</td>
+                    </tr>
+                    <tr>
+                        <td>NIF G08944209</td>
+                    </tr>
+                </table>
+            </div>
+        </div> 
+        <div style="margin-right:460px;">
+            <div>
+                <table>
+                    <tr>
+                        <td><apex:outputText value="{0,date,dd'/'MM'/'yyy }">
+                            Data:&nbsp;<apex:param value="{!Factura__c.Fecha_emisi_n_factura__c}" /> 
+                            </apex:outputText></td>              
+                    </tr>
+                    <tr>
+                        <td>Atès per:&nbsp;{!Factura__c.CreatedBy.Name}</td>              
+                    </tr>
+                    <tr>
+                        <td>Factura simplificada:&nbsp;{!Factura__c.Referencia__c}</td>             
+                    </tr> 
+                </table>   
+            </div>
+            <p style="margin:5px;">
+                ----------------------------------------------
+            </p>
+            <div>
+                <table>
+                    <tr>
+                        <th style="width:115px;">Concepte</th>
+                        <th style="width:75px;">Unitats</th>
+                        <th >Valor</th>
+                    </tr>
+                    
+                    <apex:repeat value="{!lineasfactura}" var="linea">
+                        <tr >
+                            <td style="width:115px;">{!IF(linea.Nombre_alternativo__c <> null, linea.Nombre_alternativo__c,linea.Producto__r.Name)}</td>
+                            <td style="width:55px; padding-left:20px;">{!linea.Cantidad__c}</td>
+                            <td style=" text-align:right;">
+                                <apex:outputField value="{!linea.Importe__c}"/>€
+                            </td>            
+                        </tr>
+                    </apex:repeat> 
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td> Nom:&nbsp; <apex:outputPanel rendered="{!Factura__c.Cliente__r.Cuenta_empresa__c}">{!Factura__c.Cliente__r.Name} </apex:outputPanel>{!Factura__c.Cliente__r.FirstName}&nbsp;{!Factura__c.Cliente__r.LastName}
+                        </td> 
+                    </tr>
+                </table>
+            </div>
+            
+            <p style="margin:5px;">
+                ----------------------------------------------
+            </p>
+            <p style="margin-left:145px;"><strong>
+                TOTAL&nbsp;<apex:outputField value="{!Factura__c.Importe_total_factura__c}"/>&nbsp;€
+                </strong>
+            </p>
+            <p style="margin:5px;">
+                ----------------------------------------------
+            </p>
+            <table style="margin-left:5px;">
+                <tr>
+                    <td style="width:60px;">IVA</td>
+                    <td style="width:78px;text-align:center;">Base</td>
+                    <td style="width:70px;text-align:center;">T. IVA</td>
+                    <td style="width:65px;text-align:center;">Total</td>            
+                </tr>
+                <apex:outputPanel rendered="{!Factura__c.IVA_0_YES__c}">
+                    <tr>
+                        <td style="padding-left:5px;margin-left:5px;width:60px;">0%*</td>
+                        <td style="width:60px;text-align:right;"><apex:outputField value="{!Factura__c.Base_imp_IVA_0__c}"/>&nbsp;€</td>
+                        <td style="width:70px;text-align:right;">0&nbsp;€</td>
+                        <td style="width:65px;text-align:right;">0&nbsp;€</td>
+                    </tr> 
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!Factura__c.IVA_4_YES__c}">
+                    <tr>
+                        <td style="padding-left:5px;margin-left:5px;width:60px;">4%</td>
+                        <td style="width:75px;text-align:right;"><apex:outputField value="{!Factura__c.Base_imp_IVA_4__c}"/>&nbsp;€</td>
+                        <td style="width:70px;text-align:right;"><apex:outputField value="{!Factura__c.IVA_4__c}"/> &nbsp;€</td>
+                        <td style="width:65px;text-align:right;"><apex:outputField value="{!Factura__c.Total_IVA_4__c}"/></td>
+                    </tr> 
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!Factura__c.IVA_10_YES__c}">
+                    <tr>
+                        <td style="padding-left:5px;margin-left:5px;width:60px;">10%</td>
+                        <td style="width:75px;text-align:right;"><apex:outputField value="{!Factura__c.Base_imp_IVA_10__c}"/>&nbsp;€</td>
+                        <td style="width:70px;text-align:right;"><apex:outputField value="{!Factura__c.IVA_10__c}"/>&nbsp;€</td>
+                        <td style="width:65px;text-align:right;"><apex:outputField value="{!Factura__c.Total_IVA_10__c}"/></td>
+                    </tr> 
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!Factura__c.IVA_21_YES__c}">
+                    <tr>
+                        <td style="padding-left:5px;margin-left:5px;width:60px;">21%</td>
+                        <td style="width:75px;text-align:right;"><apex:outputField value="{!Factura__c.Base_imp_IVA_21__c}"/>&nbsp;€</td>
+                        <td style="width:70px;text-align:right;"><apex:outputField value="{!Factura__c.IVA_21__c}"/>&nbsp;€</td>
+                        <td style="width:65px;text-align:right;"><apex:outputField value="{!Factura__c.Total_IVA_21__c}"/></td>
+                    </tr> 
+                </apex:outputPanel>
+                
+            </table>
+            <p style="margin:5px;">
+                ----------------------------------------------
+            </p>
+            <p style="margin-left:5px;">
+                {!Factura__c.LabelFormaPago__c}&nbsp;<apex:outputField value="{!Factura__c.Importe_total_factura__c}"/>&nbsp;€
+                
+            </p>
+            <apex:outputPanel rendered="{!OR(Factura__c.IVA_21_YES__c==true, Factura__c.IVA_10_YES__c==true, Factura__c.IVA_4_YES__c==true )}">
+                <p style="margin-left:75px;margin-bottom:-3px;">
+                    I.V.A. INCLÒS
+                </p>
+            </apex:outputPanel>
+            <div style="margin-left:8px; ">
+                <table>
+                    <apex:outputPanel rendered="{!Factura__c.IVA_0_YES__c}">
+                        <tr>
+                            <td style="width:270px;font-size:13px;"> {!$Label.LeyExentoIVA}</td>
+                            <td></td>
+                        </tr>
+                    </apex:outputPanel>
+                </table>         
+            </div>
+            <div style="margin-left:8px;margin-top:10px; ">
+                <table>
+                    <apex:repeat value="{!lineaslloc}" var="linealloc">
+                    </apex:repeat> 
+                    <apex:repeat value="{!lineasfactura}" var="linea">
+                        <!-- <apex:outputLabel rendered="{!linea.Lloc_de_trobada__c}"> -->
+                        <tr>
+                            <td  style="width:270px;" >- <u> {!linea.Producto__r.Name}</u> </td> 
+                        </tr>
+                        <tr>
+                            <td style="width:270px;">
+                                <apex:outputLabel rendered="{!OR(NOT(ISBLANK(linea.Producto__r.Fecha_de_inicio__c)),NOT(ISBLANK(linea.Producto__r.Fecha_de_fin__c)))}">
+                                    <i><b>Data:&nbsp;</b></i>{!IF(NOT(ISBLANK(linea.Producto__r.Fecha_de_inicio__c)),
+                                
+                                IF(NOT(ISBLANK(linea.Producto__r.Fecha_de_fin__c)),
+                                IF(linea.Producto__r.Fecha_de_inicio__c != linea.Producto__r.Fecha_de_fin__c, 
+                                'Del ' & TEXT(DAY(linea.Producto__r.Fecha_de_inicio__c))+"/" +TEXT(MONTH(linea.Producto__r.Fecha_de_inicio__c))+"/" +TEXT(YEAR(linea.Producto__r.Fecha_de_inicio__c)) & ' al ' & TEXT(DAY(linea.Producto__r.Fecha_de_fin__c))+"/" +TEXT(MONTH(linea.Producto__r.Fecha_de_fin__c))+"/" +TEXT(YEAR(linea.Producto__r.Fecha_de_fin__c)),
+                                'El ' & TEXT(DAY(linea.Producto__r.Fecha_de_inicio__c))+"/" +TEXT(MONTH(linea.Producto__r.Fecha_de_inicio__c))+"/" +TEXT(YEAR(linea.Producto__r.Fecha_de_inicio__c))),
+                                'El ' & TEXT(DAY(linea.Producto__r.Fecha_de_inicio__c))+"/" +TEXT(MONTH(linea.Producto__r.Fecha_de_inicio__c))+"/" +TEXT(YEAR(linea.Producto__r.Fecha_de_inicio__c))),
+                                
+                                '-')}
+                              </apex:outputLabel>  
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:270px;">
+                               <apex:outputLabel rendered="{!NOT(ISBLANK(linea.Producto__r.Datos_de_encuentros__c))}"> <i><b>Lloc de trobada:</b></i> {!linea.Producto__r.Datos_de_encuentros__c}</apex:outputLabel>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:270px;">
+                                <apex:outputLabel rendered="{!NOT(ISBLANK(linea.Producto__r.Reuni_n_Previa__c))}">
+                                    <i><b>Reunió prèvia:</b></i> {!linea.Producto__r.Reuni_n_Previa__c} 
+                                </apex:outputLabel>
+                            </td>
+                        </tr>
+                        
+                        
+                        <!-- </apex:outputLabel> -->
+                    </apex:repeat> 
+                </table>
+            </div>
+            <p>
+                .
+            </p>
+            <br/>
+        </div>
+    </div>
+</apex:page>

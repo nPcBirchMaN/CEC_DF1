@@ -1,0 +1,46 @@
+<aura:component >
+    <aura:attribute name="record" type="sObject"/>
+    
+    <lightning:card>
+        <aura:set attribute="title">
+            <lightning:icon iconName="standard:avatar" size="small"/>
+            <span style="padding-left:1rem;"> {! v.record.Name } </span>
+        </aura:set>
+ <!--
+            <ul style="padding-left:1rem;">
+                <li style="margin-bottom:0.3rem">
+                    <h3>Nº Socio: {! v.record.N_de_Socio__c } </h3>
+                </li> 
+                <li style="margin-bottom:0.3rem">
+                    <h3>Categoría: {! v.record.Categor_a__c } </h3>
+                </li> 
+                <li style="margin-bottom:0.3rem">
+                    <h3>Modalidad: {! v.record.Modalidad__c } </h3>
+                </li> 
+                <li style="margin-bottom:0.3rem">
+                    <h3>DNI: {! v.record.N_mero_de_Documento__pc } </h3>
+                </li> 
+            </ul>
+    --> 
+
+        <table style="width:80%">
+          <tr>
+            <td>Nº Socio:</td>
+            <td>{! v.record.N_de_Socio__c }</td>
+          </tr>
+          <tr>
+            <td>Categoría:</td>
+            <td>{! v.record.Categor_a__c }</td>
+          </tr>
+          <tr>
+            <td>Modalidad:</td>
+            <td>{! v.record.Modalidad__c }</td>
+          </tr>
+          <tr>
+            <td>DNI:</td>
+            <td>{! v.record.N_mero_de_Documento__pc }</td>
+          </tr>
+        </table>
+     
+    </lightning:card>
+</aura:component>

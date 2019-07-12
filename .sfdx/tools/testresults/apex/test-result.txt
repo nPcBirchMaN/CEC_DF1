@@ -1,0 +1,33 @@
+=== Test Reports
+FORMAT  FILE
+──────  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+txt     c:\Users\ipcaro\Documents\Visual Salesforce\CEC_DF1\CEC_DF1\.sfdx\tools\testresults\apex\test-result.txt
+txt     c:\Users\ipcaro\Documents\Visual Salesforce\CEC_DF1\CEC_DF1\.sfdx\tools\testresults\apex\test-run-id.txt
+junit   c:\Users\ipcaro\Documents\Visual Salesforce\CEC_DF1\CEC_DF1\.sfdx\tools\testresults\apex\test-result-7070E00002HvK3R-junit.xml
+json    c:\Users\ipcaro\Documents\Visual Salesforce\CEC_DF1\CEC_DF1\.sfdx\tools\testresults\apex\test-result-7070E00002HvK3R.json
+
+=== Test Results
+TEST NAME                      OUTCOME  MESSAGE  RUNTIME (MS)
+─────────────────────────────  ───────  ───────  ────────────
+BirchmanGeneralAPI_Test.case1  Pass              30
+
+=== Test Summary
+NAME                 VALUE
+───────────────────  ────────────────────────────────────────────────
+Outcome              Passed
+Tests Ran            1
+Passing              1
+Failing              0
+Skipped              0
+Pass Rate            100%
+Fail Rate            0%
+Test Start Time      Jul 12, 2019 11:34 AM
+Test Execution Time  30 ms
+Test Total Time      30 ms
+Command Time         4258 ms
+Hostname             https://cecatalunya--df1.cs89.my.salesforce.com
+Org Id               00D0E00000017IEUAY
+Username             cec_dev@birchmangroup.com.df1
+Test Run Id          7070E00002HvK3R
+User Id              0051r000008FE38AAG
+

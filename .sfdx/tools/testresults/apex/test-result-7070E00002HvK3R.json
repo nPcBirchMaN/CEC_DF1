@@ -1,0 +1,46 @@
+{
+    "summary": {
+        "outcome": "Passed",
+        "testsRan": 1,
+        "passing": 1,
+        "failing": 0,
+        "skipped": 0,
+        "passRate": "100%",
+        "failRate": "0%",
+        "testStartTime": "Jul 12, 2019 11:34 AM",
+        "testExecutionTime": "30 ms",
+        "testTotalTime": "30 ms",
+        "commandTime": "4258 ms",
+        "hostname": "https://cecatalunya--df1.cs89.my.salesforce.com",
+        "orgId": "00D0E00000017IEUAY",
+        "username": "cec_dev@birchmangroup.com.df1",
+        "testRunId": "7070E00002HvK3R",
+        "userId": "0051r000008FE38AAG"
+    },
+    "tests": [
+        {
+            "attributes": {
+                "type": "ApexTestResult",
+                "url": "/services/data/v46.0/tooling/sobjects/ApexTestResult/07M0E000008oJSBUA2"
+            },
+            "Id": "07M0E000008oJSBUA2",
+            "QueueItemId": "7090E0000012mmFQAQ",
+            "StackTrace": null,
+            "Message": null,
+            "AsyncApexJobId": "7070E00002HvK3RQAV",
+            "MethodName": "case1",
+            "Outcome": "Pass",
+            "ApexClass": {
+                "attributes": {
+                    "type": "ApexClass",
+                    "url": "/services/data/v46.0/tooling/sobjects/ApexClass/01p0E000001LBHtQAO"
+                },
+                "Id": "01p0E000001LBHtQAO",
+                "Name": "BirchmanGeneralAPI_Test",
+                "NamespacePrefix": null
+            },
+            "RunTime": 30,
+            "FullName": "BirchmanGeneralAPI_Test.case1"
+        }
+    ]
+}

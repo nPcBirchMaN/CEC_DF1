@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Modalidad__c</fullName>
+    <externalId>false</externalId>
+    <label>Modalidad</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Colectivo</fullName>
+                <default>false</default>
+                <label>Colectivo</label>
+            </value>
+            <value>
+                <fullName>Colectivo federado</fullName>
+                <default>false</default>
+                <label>Colectivo federado</label>
+            </value>
+            <value>
+                <fullName>Familiar</fullName>
+                <default>false</default>
+                <label>Familiar</label>
+            </value>
+            <value>
+                <fullName>Familiar federado</fullName>
+                <default>false</default>
+                <label>Familiar federado</label>
+            </value>
+            <value>
+                <fullName>Niños 0-5</fullName>
+                <default>false</default>
+                <label>Niños 0-5</label>
+            </value>
+            <value>
+                <fullName>Niños 6-13</fullName>
+                <default>false</default>
+                <label>Niños 6-13</label>
+            </value>
+            <value>
+                <fullName>Juniors 14-17</fullName>
+                <default>false</default>
+                <label>Juniors 14-17</label>
+            </value>
+            <value>
+                <fullName>Jóvenes 18-25</fullName>
+                <default>false</default>
+                <label>Jóvenes 18-25</label>
+            </value>
+            <value>
+                <fullName>Jóvenes 18-25 federados</fullName>
+                <default>false</default>
+                <label>Jóvenes 18-25 federados</label>
+            </value>
+            <value>
+                <fullName>Jóvenes 26-30</fullName>
+                <default>false</default>
+                <label>Jóvenes 26-30</label>
+            </value>
+            <value>
+                <fullName>Jóvenes 26-30 federados</fullName>
+                <default>false</default>
+                <label>Jóvenes 26-30 federados</label>
+            </value>
+            <value>
+                <fullName>Menor No soci</fullName>
+                <default>false</default>
+                <label>Menor No soci</label>
+            </value>
+            <value>
+                <fullName>No soci</fullName>
+                <default>false</default>
+                <label>No soci</label>
+            </value>
+            <value>
+                <fullName>Participatiu</fullName>
+                <default>false</default>
+                <label>Participatiu</label>
+            </value>
+            <value>
+                <fullName>Protector</fullName>
+                <default>false</default>
+                <label>Protector</label>
+            </value>
+            <value>
+                <fullName>Protector federados</fullName>
+                <default>false</default>
+                <label>Protector federados</label>
+            </value>
+            <value>
+                <fullName>Veteranos</fullName>
+                <default>false</default>
+                <label>Veteranos</label>
+            </value>
+            <value>
+                <fullName>Veteranos federados</fullName>
+                <default>false</default>
+                <label>Veteranos federados</label>
+            </value>
+            <value>
+                <fullName>Vitalicio</fullName>
+                <default>false</default>
+                <label>Vitalicio</label>
+            </value>
+            <value>
+                <fullName>Seniors</fullName>
+                <default>false</default>
+                <label>Seniors</label>
+            </value>
+            <value>
+                <fullName>Seniors federados</fullName>
+                <default>false</default>
+                <label>Seniors federados</label>
+            </value>
+            <value>
+                <fullName>Veteranos y seniors</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Veteranos y seniors</label>
+            </value>
+            <value>
+                <fullName>Veteranos y seniors federados</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Veteranos y seniors federados</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

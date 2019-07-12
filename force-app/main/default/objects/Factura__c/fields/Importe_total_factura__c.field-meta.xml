@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Importe_total_factura__c</fullName>
+    <externalId>false</externalId>
+    <label>Importe total factura</label>
+    <summarizedField>L_neas_de_factura__c.Importe__c</summarizedField>
+    <summaryForeignKey>L_neas_de_factura__c.Factura__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

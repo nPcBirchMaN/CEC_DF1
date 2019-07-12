@@ -1,0 +1,57 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" controller="LiquidacionProductoController">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:attribute name="lineaFactura" type="sObject[]"/>
+    <aura:attribute name="totales" type="sObject[]"/>
+    <div>
+        <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+            <thead>
+                <tr class="slds-text-title--caps">
+                    <th aria-sort="ascending"  scope="col">Total facturas</th>
+                    <th aria-sort="none" scope="col">Coste total</th>
+                    <th aria-sort="none" scope="col">Ganancia total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.totales}" var="total">
+                    <tr class="slds-text-title--caps">
+                        <td class="slds-truncate">{!total.totalFacturas}</td>
+                        <td class="slds-truncate">{!total.costeTotal}</td>
+                        <td class="slds-truncate">{!total.gananciaTotal}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        <br/>
+        <table class="slds-table slds-table_bordered slds-table_resizable-cols slds-table_fixed-layout" role="grid">
+            <thead>
+                <tr class="slds-text-title--caps">
+                    <th aria-sort="ascending"  scope="col">Núm. Factura</th>
+                    <th aria-sort="none"  scope="col">Tipo Pedido</th>
+                    <th aria-sort="none" scope="col">Tipo de factura</th>
+                    <th aria-sort="none" scope="col">Núm. Referencia</th>
+                    <th aria-sort="none" scope="col">Tipo de pago</th>
+                    <th aria-sort="none" scope="col">Estado</th>
+                    <th aria-sort="none" scope="col">Cuenta</th>
+                    <th aria-sort="none" scope="col">Cantidad</th>
+                    <th aria-sort="none" scope="col">Importe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.lineaFactura}" var="lFactura">
+                    <tr class="slds-text-title--caps">
+                        <td class="slds-truncate"><lightning:formattedUrl value="{!'/'+lFactura.billingId}" label="{!lFactura.numFactura}" target="_blank" /></td>
+                        <td class="slds-truncate">{!lFactura.tipoPedido}</td>
+                        <td class="slds-truncate">{!lFactura.tipoFactura}</td>
+                        <td class="slds-truncate">{!lFactura.numReferencia}</td>
+                        <td class="slds-truncate">{!lFactura.tipoPago}</td>
+                        <td class="slds-truncate">{!lFactura.estado}</td>
+                        <td class="slds-truncate"><lightning:formattedUrl value="{!'/'+lFactura.accountId}" label="{!lFactura.accountName}" target="_blank" /></td>
+                        <td class="slds-truncate">{!lFactura.quantity}</td>
+                        <td class="slds-truncate">{!lFactura.unitPrice}</td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+</aura:component>

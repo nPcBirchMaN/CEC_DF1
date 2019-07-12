@@ -1,0 +1,12 @@
+.THIS.slds-page-header {
+    border-radius:1rem !important;
+}
+
+.THIS {
+    font-size:1.2rem;
+}
+
+.THIS table td {
+    padding-left : 1rem;
+    padding-top : 0.5rem;
+}

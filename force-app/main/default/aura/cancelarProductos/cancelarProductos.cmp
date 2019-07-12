@@ -1,0 +1,8 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="ProductSynchro">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="message" type="String"/>
+    <div>
+       <lightning:button label="Cancelar producto" onclick="{!c.CancelProduct}"/>
+    </div>
+    <p>{!v.message}</p>
+</aura:component>

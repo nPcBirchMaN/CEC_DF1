@@ -1,0 +1,8 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="WordpressSyncAccountController">
+   <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="message" type="String"/>
+    <div>
+       <lightning:button label="Sincronizar cuenta" onclick="{!c.AccountSync}"/>
+    </div>
+    <p>{!v.message}</p>
+</aura:component>

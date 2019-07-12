@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tipo_de_impuesto__c</fullName>
+    <externalId>false</externalId>
+    <label>Tipo de impuesto</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>zero</fullName>
+                <default>false</default>
+                <label>0% Tasa Cero</label>
+            </value>
+            <value>
+                <fullName>superreduit</fullName>
+                <default>false</default>
+                <label>4% Tasa super reducida</label>
+            </value>
+            <value>
+                <fullName>reduit</fullName>
+                <default>false</default>
+                <label>10% Tasa baja</label>
+            </value>
+            <value>
+                <fullName>standard</fullName>
+                <default>false</default>
+                <label>21% Estándar</label>
+            </value>
+            <value>
+                <fullName>none</fullName>
+                <default>false</default>
+                <label>Exenta</label>
+            </value>
+            <value>
+                <fullName>No aplicar</fullName>
+                <default>false</default>
+                <label>No aplicar</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

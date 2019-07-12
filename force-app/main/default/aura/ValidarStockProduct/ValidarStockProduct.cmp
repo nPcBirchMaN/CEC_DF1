@@ -1,0 +1,48 @@
+<aura:component controller="validarStockProductController" implements="force:lightningQuickAction,force:hasRecordId,flexipage:availableForRecordHome" access="global">
+    
+    <aura:attribute name="productRecord" type="Object"/>
+    <aura:attribute name="isLoaded" type="Boolean" default="False"/>
+    <aura:attribute name="isError" type="Boolean" default="False"/>
+    <aura:attribute name="errorInfo" type="String" default=""/>
+    <aura:attribute name="productData" type="Map" default="{}"/>
+    <aura:attribute name="productCount" type="Integer" default="0"/>
+    <force:recordData aura:id="record" layoutType="FULL" recordId="{!v.recordId}" targetFields="{!v.productRecord }" mode="VIEW"/>
+    
+    <ltng:require scripts="{!$Resource.TweenMax}"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.initComponent}"/>
+
+    <aura:if isTrue="{! v.productRecord.ECommerce__c }" >
+        <aura:if isTrue="{! v.isLoaded }" >
+            <aura:if isTrue="{! v.isError }" >
+				<div class="slds-text-color_error"> {! v.errorInfo } </div>
+                <aura:set attribute="else">
+                    <div class="slds-grid slds-grid_vertical-align-center" style="height:170px">
+                      <div class="slds-col">
+                        <span class="productCount"><div class="slds-align_absolute-center" style="height: 100%">{! v.productCount }</div></span>
+                      </div>
+                    </div>
+                    <div class="slds-text-body_regular"> <b>Vendido en WooComerce*: </b> {! v.productData.total_sales } </div>
+                    <div class="slds-text-body_regular">* El stock puede no estar sincronizado con WooComerce. </div>
+                    <!--
+            		<div class="slds-text-body_regular"> <b>Stock: </b> {! v.productData.stock_quantity } - {! v.productCount } </div>
+                    <div class="slds-text-body_regular"> <b>Vendido en woocomerce: </b> {! v.productData.total_sales } </div>
+                    -->
+                </aura:set>
+            </aura:if>
+            
+            <aura:set attribute="else">
+                <div class="slds-spinner slds-spinner_large slds-spinner_brand" role="status">
+                    <span class="slds-assistive-text">Cargando...</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </aura:set>
+        </aura:if>
+        
+        
+        <aura:set attribute="else">
+            <div class="slds-text-body_regular"> Este producto no está sincronizado con WooCommerce. Las plazas disponibles son las definidas en el campo "Plazas disponibles" de la cabecera de este producto</div>
+        </aura:set>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nombre_del_titular__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ( Cliente__r.Tipo_cuenta__c = &#39;Cuenta personal&#39;, BLANKVALUE(Cliente__r.Titular_de_la_cuenta__c, (Cliente__r.FirstName + &#39; &#39; + Cliente__r.LastName)),  Cliente__r.Name )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Nombre del titular</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

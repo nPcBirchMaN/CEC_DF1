@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="force.apex" timestamp="2019-07-12T11:34:31+02:00" hostname="https://cecatalunya--df1.cs89.my.salesforce.com" tests="1" failures="0"  errors="0"  time="0.03">
+        <properties>
+            <property name="outcome" value="Passed"/>
+            <property name="testsRan" value="1"/>
+            <property name="passing" value="1"/>
+            <property name="failing" value="0"/>
+            <property name="skipped" value="0"/>
+            <property name="passRate" value="100%"/>
+            <property name="failRate" value="0%"/>
+            <property name="testStartTime" value="Jul 12, 2019 11:34 AM"/>
+            <property name="testExecutionTime" value="0.03 s"/>
+            <property name="testTotalTime" value="0.03 s"/>
+            <property name="commandTime" value="4.26 s"/>
+            <property name="hostname" value="https://cecatalunya--df1.cs89.my.salesforce.com"/>
+            <property name="orgId" value="00D0E00000017IEUAY"/>
+            <property name="username" value="cec_dev@birchmangroup.com.df1"/>
+            <property name="testRunId" value="7070E00002HvK3R"/>
+            <property name="userId" value="0051r000008FE38AAG"/>
+        </properties>
+        <testcase name="case1" classname="BirchmanGeneralAPI_Test" time="0.03">
+        </testcase>
+    </testsuite>
+</testsuites>

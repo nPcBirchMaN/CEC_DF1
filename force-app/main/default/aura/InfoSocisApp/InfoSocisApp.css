@@ -1,0 +1,24 @@
+.THIS {
+    padding:0.3rem;
+}
+
+.THIS.bkg {
+    height:100%;
+    background-color:#95bcf9;
+    position:absolute;
+    top:0;
+    width:100%;
+    background-image: url(/resource/AppBkg);
+    background-size: cover;
+}
+
+.THIS .logo {
+    border-radius:1rem;
+    width:150px;
+}
+
+.THIS .logo-container {
+    position:absolute;
+    margin-top:2rem;
+    margin-left:2rem;
+}

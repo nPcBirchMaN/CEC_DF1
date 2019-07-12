@@ -1,0 +1,42 @@
+<aura:component controller="PanelDeControlAdministradorController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="visible" type="Boolean" default="true"/>
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    
+    <aura:if isTrue="{!v.visible}">
+        <article class="slds-card">
+            <div class="slds-card__header slds-grid">
+                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-account" title="account">
+                        <lightning:icon iconName="custom:custom19" size="medium" alternativeText="Indicates approval"/>
+                    </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title">
+                        	<span class="slds-text-heading_small"><strong>Panel de control</strong></span>
+                        </h2>
+                    </div>
+                </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner">
+                <h3 class="slds-card__header-title">
+                	<span class="slds-text-heading_small"><strong>Gestión de socios</strong></span>
+                </h3>
+                <lightning:button variant="brand" label="Recálculo de socios" onclick="{! c.recalculoSocios }"/>                
+            </div>
+            <div class="slds-card__body slds-card__body_inner">
+                <h3 class="slds-card__header-title">
+                	<span class="slds-text-heading_small"><strong>Gestión de remesa Revista Montaña</strong></span>
+                </h3>
+                <c:customLookup isRevista = "true" objectAPIName="Product2" IconName="standard:product" label="Revista" selectedRecord="{!v.selectedLookUpRecord}"/>
+                <lightning:button variant="brand" label="Generación remesa" onclick="{! c.generarRemesaRevistaMuntanya }"/>                
+            </div>
+            
+            <div class="slds-card__body slds-card__body_inner">
+                <!-- <c:SendRemittance />   -->            
+            </div>
+            <footer class="slds-card__footer">
+            </footer>
+        </article>
+    </aura:if>
+</aura:component>

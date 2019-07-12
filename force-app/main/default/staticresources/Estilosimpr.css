@@ -1,0 +1,81 @@
+ @page{
+    size:landscape;
+    margin:0.25in;
+}
+
+.container {
+    height:184px;
+    max-width: 330px;
+    min-width: 330px;
+    position:relative !important;
+}
+
+.soci-info {
+    margin-right: 15px;
+    max-width:235px;
+    min-width:235px;
+    display:inline-block !important;
+}
+
+.soci-id {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size:15px !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.soci-name {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size:15px !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.soci-qr {
+    display:inline-block !important;
+    max-width:64px;
+    min-width:64px;
+    width:64px;
+    padding:0;
+    margin:0;
+}
+
+.soci-container {
+    position:absolute;
+	bottom: 0 !important;
+    padding:0;
+    padding-left:5px;
+    margin:0;
+    max-width: inherit;
+    min-width: inherit;
+}
+/*.impre {
+    position:absolute;
+    left:32px;
+    top:161px;
+    width:300px;
+    //border: 1px solid blue;
+    text-align:right;
+   
+   
+}
+.qr {
+    text-align:right !important;
+}
+.p2{
+    font-family: Montserrat;
+    font-size:14px;
+    text-align:right;
+    padding:0px; 
+    margin:0px;
+}
+.p1{
+    font-family: Montserrat;
+    font-size:12.5px;
+    text-align:right;
+    padding:0px; 
+    margin:0px;
+}
+    */
+
+

@@ -1,0 +1,38 @@
+<apex:page >
+    <html>
+        <header>
+            <style>
+                body{
+                font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+                font-size: 11px;
+                }
+            </style>
+        </header>
+        <body>
+            <div id="cuerpo">
+                <p>
+                    Benvolgut/da,
+                </p>
+                <p>
+                    T'enviem aquest correu per comunicar-te que l'activitat {!$CurrentPage.parameters.Producto} {!$CurrentPage.parameters.fecha} ha estat cancel·lada, 
+                    és per això que procedirem al reemborsament de l'import íntegre de l'activitat.
+                </p>
+                <p>
+                    Disculpa les molèsties que això t'hagi pogut ocasionar.
+                </p>
+                <p>
+                    Salutacions cordials,
+                </p>
+            </div>
+            <div id="firma">
+                <apex:image url="https://cec.cat/wp-content/uploads/2018/07/CEC-Logo.png" width="25%"/>
+                <p>Paradís, 10 · 08002 Barcelona <br/>
+           		 Tel. 933 152 311 <br/>
+                </p>
+                <apex:outputLink value="https://www.cec.cat" id="theLink" target="_blank">www.cec.cat</apex:outputLink>
+
+            </div>
+        </body>
+    </html>
+    
+</apex:page>
