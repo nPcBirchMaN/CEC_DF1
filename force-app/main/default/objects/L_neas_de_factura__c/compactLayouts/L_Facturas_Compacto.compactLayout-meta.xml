@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L_Facturas_Compacto</fullName>
+    <fields>Name</fields>
+    <fields>Factura__c</fields>
+    <fields>Producto__c</fields>
+    <fields>Importe_sin_impuestos__c</fields>
+    <fields>Impuestos__c</fields>
+    <fields>Importe__c</fields>
+    <label>L.Facturas Compacto</label>
+</CompactLayout>

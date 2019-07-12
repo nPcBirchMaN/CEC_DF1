@@ -1,0 +1,277 @@
+<apex:page controller="EnvioInscritosController" renderAs="pdf" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false">
+    <html>
+        <head>
+            <style>
+                @page {
+                size: A4 landscape;
+                }
+                body {
+                font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+                font-size: 11px;
+                }
+                table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                }
+                table {
+                width:100%;
+                height:auto;
+                -fs-table-paginate: paginate;
+                border-spacing: 0;
+                }
+                th {
+                font-weight: bold;
+                text-align: center;
+                }
+                #Inscritos td {
+                
+                }
+                .page-break {
+                display:block;
+                page-break-after:always;
+                }
+                #texto p {
+                text-align: justify;
+                }
+                
+                
+            </style>
+        </head>
+        <body>
+            <div class="page-break">
+                <div>
+                    <h1>{!product.name}</h1>
+                </div>
+                <div>
+                    <table id="Producto">
+                        <tr>
+                            <th colspan="2">DADES DE L'ACTIVITAT</th>
+                        </tr>
+                        <tr>
+                            <td style="max-width:230px; min-width:230px; width:230px;">DATA INICI :</td>
+                            <td style="max-width:500px; min-width:500px; width:500px;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!product.Fecha_de_inicio__c}" /> 
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>DATA FINAL :</td>
+                            <td><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!product.Fecha_de_fin__c}" /> 
+                                </apex:outputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CATEGORIES :</td>
+                            <td>{!product.Categor_a__c}</td>
+                        </tr>
+                        <tr>
+                            <td>TIPOLOGIA :</td>
+                            <td>{!product.Tipologia__c}</td>
+                        </tr>
+                        <tr>
+                            <td>GRAU DE DIFICULTAT :</td>
+                            <td>{!product.Grado_de_dificultad__c}</td>
+                        </tr>
+                        <tr>
+                            <td>COORDINADA PER :</td>
+                            <td>{!product.Coordinada_por__c}</td>
+                        </tr>
+                        <tr>
+                            <td>DESCRIPCIÓ INTRODUCTÒRIA :</td>
+                            <td>{!product.Description}</td>
+                        </tr>
+                        <tr>
+                            <td>DESCRIPCIÓ COMPLETA :</td>
+                            <td><apex:outputText value="{!product.Descripci_n_completa__c}" escape="false"/></td>
+                        </tr>
+                        <tr>
+                            <td>DADES TROBADA :</td>
+                            <td>{!product.Datos_de_encuentros__c}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">ASPECTES TÈCNICS</th>
+                        </tr>
+                        <tr>
+                            <td>RISCOS PARTICULARS A LA MUNTANYA :</td>
+                            <td>Inclemències del temps, plantes, animals, estat del ferm, convivència amb altres persones i vehicles, altres :<br/><br/>
+                                ______________________________________________________________________________________________________________________________<br/><br/>
+                                ______________________________________________________________________________________________________________________________<br/><br/>
+                            </td>
+                        </tr>
+                    </table>
+                </div><br/>
+                <div>
+                    <table id="Producto">
+                        <tr>
+                            <td style="max-width:230px; min-width:230px; width:230px;">RISCOS PARTICULARS DE LA SORTIDA :</td>
+                            <td>Neu, gel, vent, fred, caiguda de pedres, passos aeris, menjars intolerants o al·lèrgics, manca d'aigua potable al recorregut, altres :<br/><br/>
+                                ______________________________________________________________________________________________________________________________<br/><br/>
+                                ______________________________________________________________________________________________________________________________<br/><br/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <p id="texto">
+                        Els sotasignats declaren que coneixen els riscos generals de les activitats que es desenvolupen al medi natural, que han estat informats de tots els riscos 
+                        específics d'aquesta activitat concreta i que els accepten voluntàriament comprometent-se a col·laborar activament en el bon funcionament de l'activitat.
+						<br/>
+						Igualment, i d'acord amb el que estableix la Llei 1/1982, de 5 de maig, sobre el dret a l'honor, a la intimitat personal i familiar i a la pròpia imatge, 
+                        marcant "Sí" al formulari, atorguen el seu consentiment explícit al CEC per a utlitzar les imatges captades mitjançant fotografies i/o vídeos realitzats 
+                        per la notra entitat, amb la finalitat de publicar-les a la pàgina web, xarxes socials o altres mitjans de comunicació per a fer difusió de les activitats 
+                        i de l'entitat, sense límit temporal ni geogràfic.
+						<br/>
+						Els sotasignats atorguen el seu consentiment lleial, explícit i inequívoc al CEC per al tractament de les seves dades personals i imatges en els termes que 
+                        consten al peu del formulari. En el cas de menors de 14 anys cal el consentiment del pare/mare, tutor/a.
+                    </p>
+                </div>
+            </div>
+            <div class="page-break">
+                
+                <table id="Inscritos">
+                    <thead>
+                        <tr>
+                            <th colspan="11">LLISTA D'INSCRITS</th>
+                        </tr>
+                        
+                        <tr>
+                            <th>Nom i Cognoms</th>
+                            <th>DNI</th>
+                            <th>Data naixement</th>
+                            <th>Categoria</th>
+                            <th>Data alta original</th>
+                            <th>Telèfon</th>
+                            <th>Correu electrònic</th>
+                            <th>Llicència FEEC</th>
+                            <th>Signatura</th>
+                            <th colspan="2">Cedeix els seus drets d'imatge?<br/>Encercleu l'opció que escolliu.</th>
+                        </tr>
+                    </thead>
+                    
+                    <!--
+                    <apex:repeat id="ListaInscritos" value="{!ListaInscritos}" var="li">
+                        <tr style="height:1.2cm">
+                            <td width="10%">{!li.order.account.firstname} {!li.order.account.lastname}</td>
+                            <td width="9%" style="text-align:center;">{!li.order.account.N_mero_de_Documento__pc}</td>
+                            <td width="9%" style="text-align:center;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!li.order.account.PersonBirthdate}" /> 
+                                </apex:outputText></td>
+                            <td width="9" style="text-align:center;">{!li.order.account.Categor_a__c}</td>
+                            <td width="9%"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!li.order.account.Fecha_alta_original__c}" /> 
+                                </apex:outputText></td>
+                            <td width="9%">{!li.order.account.Phone}</td>
+                            <td width="10%" style="word-wrap: break-word;">{!li.order.account.PersonEmail}</td>
+                            <td width="10%">{!li.order.account.Licencia__c}</td>
+                            <td width="15%"></td>
+                            <td width="5%" style="text-align:center;">SÍ</td>
+                            <td width="5%" style="text-align:center;">NO</td>
+                        </tr>
+                    </apex:repeat>
+                    -->
+                    <apex:repeat id="ListaInscritos" value="{!ListaInscritos}" var="li">
+                        <tr style="height:1.2cm">
+                            <td style="max-width:100px; min-width:100px; width:100px;">{!li.order.account.firstname} {!li.order.account.lastname}</td>
+                            <td style="max-width:80px; min-width:80px; width:80px; text-align:center;">{!li.order.account.N_mero_de_Documento__pc}</td>
+                            <td style="max-width:80px; min-width:80px; width:80px; text-align:center;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!li.order.account.PersonBirthdate}" /> 
+                                </apex:outputText></td>
+                            <td style="max-width:100px; min-width:100px; width:100px; text-align:center;">{!li.order.account.Categor_a__c}</td>
+                            <td style="max-width:90px; min-width:90px; width:90px; text-align:center;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!li.order.account.Fecha_alta_original__c}" /> 
+                                </apex:outputText></td>
+                            <td style="max-width:80px; min-width:80px; width:80px; text-align:center;">{!li.order.account.Phone}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px; word-wrap: break-word;">{!li.order.account.PersonEmail}</td>
+                            <td style="max-width:100px; min-width:100px; width:100px;">{!li.order.account.Licencia__c}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px;"></td>
+                            <td style="max-width:30px; min-width:30px; width:30px; text-align:center;">SÍ</td>
+                            <td style="max-width:30px; min-width:30px; width:30px; text-align:center;">NO</td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+            <br/>
+            <div>
+                <table id="Espera">
+                    <thead>
+                        <tr>
+                            <th colspan="11">LLISTA EN ESPERA</th>
+                        </tr>
+                        <tr>
+                            <th>Nom i Cognoms</th>
+                            <th>DNI</th>
+                            <th>Data naixement</th>
+                            <th>Categoria</th>
+                            <th>Data alta original</th>
+                            <th>Telèfon</th>
+                            <th>Correu electrònic</th>
+                        </tr>
+                    </thead>
+                    <apex:repeat id="ListaEspera" value="{!ListaEspera}" var="le">
+                        <tr>
+                            <td style="max-width:165px; min-width:165px; width:165px; text-align:center;">{!le.order.account.firstname} {!le.order.account.lastname}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;">{!le.order.account.N_mero_de_Documento__pc}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!le.order.account.PersonBirthdate}" /> 
+                                </apex:outputText></td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;">{!le.order.account.Categor_a__c}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!le.order.account.Fecha_alta_original__c}" /> 
+                                </apex:outputText></td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;">{!le.order.account.Phone}</td>
+                            <td style="max-width:220px; min-width:220px; width:220px; text-align:center;">{!le.order.account.PersonEmail}</td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+            <br/>
+            <div>
+                <table id="bajas">
+                    <thead>
+                        <tr>
+                            <th colspan="11">LLISTA DE BAIXES</th>
+                        </tr>
+                        <tr>
+                            <th>Nom i Cognoms</th>
+                            <th>DNI</th>
+                            <th>Data naixement</th>
+                            <th>Categoria</th>
+                            <th>Data alta original</th>
+                            <th>Telèfon</th>
+                            <th>Correu electrònic</th>
+                        </tr>
+                    </thead>
+                    <apex:repeat id="ListaBajas" value="{!ListaBajas}" var="lb">
+                        <tr>
+                            <td style="max-width:165px; min-width:165px; width:165px; text-align:center;">{!lb.order.account.firstname} {!lb.order.account.lastname}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;">{!lb.order.account.N_mero_de_Documento__pc}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!lb.order.account.PersonBirthdate}" /> 
+                                </apex:outputText></td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;">{!lb.order.account.Categor_a__c}</td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;"><apex:outputText value="{0,date,dd' / 'MM' / 'yyyy}">
+                                <apex:param value="{!lb.order.account.Fecha_alta_original__c}" /> 
+                                </apex:outputText></td>
+                            <td style="max-width:120px; min-width:120px; width:120px; text-align:center;">{!lb.order.account.Phone}</td>
+                            <td style="max-width:220px; min-width:220px; width:220px; text-align:center;">{!lb.order.account.PersonEmail}</td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </div>
+            <div>
+                <p>
+                    INFORMACIÓ SOBRE PROTECCIÓ DE DADES: RESPONSABLE: Centre Excursionista de Catalunya (G60221041), C/ Paradís, 10 (08002) Barcelona. FINALITATS: Gestionar i 
+                    publicar la seva participació a l’ activitat. LEGITIMACIÓ: Consentiment del titular i/o del seu tutor. DESTINATARIS: No estan previstes cessions, tret les 
+                    que legalment són obligatòries i les necessàries per a dur a terme l’activitat. CONSERVACIÓ: Durant l’any en que es desenvolupa l’activitat, i finalitzada 
+                    aquesta, durant el termini necessari per atendre eventuals responsabilitats, i per finalitats estadístiques, històriques i informatives. DRETS: Pot retirar 
+                    el seu consentiment en qualsevol moment i exercir el dret accés, rectificació, supressió, portabilitat de les seves dades i limitació dirigint-se a l’adreça
+                    <a href="mailto:protecciodades@cec.cat">protecciodades@cec.cat</a>, indicant el tractament específic i el dret que vol exercir. En cas de divergències, pot 
+                    presentar una reclamació davant l’ Agencia de Protecció de Dades (www.aepd.es).
+
+                </p>
+            </div>
+            <br/><br/>
+        </body>
+    </html>
+</apex:page>

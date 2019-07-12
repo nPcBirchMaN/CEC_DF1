@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tipo_empleado__c</fullName>
+    <externalId>false</externalId>
+    <label>Tipo empleado</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Coordinador/Voluntario</fullName>
+                <default>false</default>
+                <label>Coordinador/Voluntario</label>
+            </value>
+            <value>
+                <fullName>Empleado</fullName>
+                <default>false</default>
+                <label>Empleado</label>
+            </value>
+            <value>
+                <fullName>Vocal</fullName>
+                <default>false</default>
+                <label>Vocal</label>
+            </value>
+            <value>
+                <fullName>Profesional</fullName>
+                <default>false</default>
+                <label>Profesional</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

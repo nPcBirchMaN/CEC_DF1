@@ -1,0 +1,15 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="VencimientoController">
+	<aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="numCuotas" type="Integer"/>
+    <p>Mensaje: {!v.message}</p>
+    <div>
+    <lightning:input type="number" value="{!v.numCuotas}" name="NumFac" label="Nº de Cuotas" placeholder="Min. 1 - Max. 12" min="1" max="12"/>
+    </div>
+    <div> 
+        <lightning:button variant="brand" label="CREAR" onclick="{!c.NuevoVencimiento}"/>
+    </div>
+</aura:component>
+
+<!--<aura:attribute name="botonOff" type="boolean" default="false"/>-->
+<!--<lightning:button variant="brand" label="CREAR" onclick="{!c.NuevoVencimiento}" disabled="{!v.botonOff}"/>-->

@@ -1,0 +1,32 @@
+<apex:page Controller="QRPageController" rendered="true" action="{! getExecute }">
+        <apex:includeScript value="{!URLFOR($Resource.qrJS,'davidshimjs-qrcodejs-04f46c6/qrcode.min.js')}"/>
+    
+    <!-- QR container -->
+    <div id="qrcode" style="width:50px !important; height:50px !important; margin-top:15px;"></div>
+    <!-- End QR container -->
+    
+    <script type="text/javascript">
+    // Call QR generation by davidshimjs    
+    var qrcode = new QRCode("qrcode", {
+    text: "{! baseUrl }/c/InfoSocisApp.app?id={! data }",
+    width: 64,
+    height: 64,
+    correctLevel : QRCode.CorrectLevel.L
+	});
+    
+    // Give it time enough to generate
+    setTimeout(function(){
+        var divTag = document.getElementById("qrcode");
+    	var img = divTag.childNodes[1];
+        
+        if({! ISBLANK($CurrentPage.parameters.qrEncoded)}) {
+            // Reload VFP
+            var currentPageUrl = window.location.href + '&qrEncoded=' + encodeURIComponent(img.src);
+            window.location.replace(currentPageUrl);
+            console.log('currentPageUrl :: ' + currentPageUrl);
+        } else {
+			
+        }
+    }, 50);
+    </script>
+</apex:page>

@@ -1,0 +1,71 @@
+<aura:component controller="CancelOrderController" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+    <aura:html tag="style">
+        .cuf-content {
+            padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+            padding: 0rem !important;
+        }       
+        .slds-modal__content{
+            overflow-y:hidden !important;
+            height:unset !important;
+            max-height:unset !important;
+        }
+    </aura:html>
+    
+    <aura:attribute name="searchText" type="String" default=""/>
+    <aura:attribute name="searchResult" type="List" description=""/>
+    <aura:attribute name="disabledSave" type="Boolean" default="true"/>
+    <aura:attribute name="changeBySearch" type="Boolean" default="false"/>
+    <aura:attribute name="firstSearch" type="Boolean" default="true"/>
+    <aura:attribute name="orderItemSelected" type="List" description=""/>
+    <aura:attribute name="orderItemSelectedObject" type="List" description=""/>
+    
+    <aura:attribute name="messageBody" type="String" default=""/>
+    <aura:attribute name="messageTitle" type="String" default=""/>
+    <aura:attribute name="messageVisible" type="Boolean" default="false"/>
+    
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    
+    <div class="modal-header slds-modal__header slds-size_1-of-1">
+        <h4 class="title slds-text-heading--medium" >Anular productos</h4>
+    </div>
+    
+    
+    <!-- Body -->
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+        <div class="slds-form-element slds-lookup" data-select="single">
+            <div class="slds-form-element__control">
+                <div class="slds-input-has-icon slds-input-has-icon--right">
+                    <lightning:buttonIcon iconName="utility:search" variant="bare" onclick="{! c.handleSearch }" alternativeText="Search" class="slds-input__icon" />
+                    <ui:inputText value="{!v.searchText}" keyup="{! c.handleSearch }" updateOn="keyUp" class="slds-lookup__search-input slds-input" placeholder="Introduce el nombre de un producto..." />
+                </div>
+            </div>
+        </div>
+    </div>
+    <aura:renderIf isTrue="{!v.messageVisible}">
+        <ui:message title="{!v.messageTitle}" severity="warning" closable="false">
+                {!v.messageBody}
+        </ui:message>
+    </aura:renderIf>
+    
+    <div style="min-height:200px !important; max-height: 200px !important; overflow-y: scroll; overflow-x: hidden;">
+        <lightning:datatable
+            aura:id="orderItemTable"
+            columns="{! v.columns }"
+            data="{! v.data }"
+            keyField="Id"
+            resizeColumnDisabled = "true"
+            onrowselection="{! c.handleSelectedRow }"
+            showRowNumberColumn="false"
+            onsave="{!c.handleTableSave}"/>
+    </div>
+    
+    <div class="modal-footer slds-modal__footer">
+                <ui:button class="slds-button slds-button_neutral" label="Cancelar" press="{! c.cancel}" /> 
+                <ui:button class="slds-button slds-button--brand"  label="Aceptar" press="{!c.save}" disabled="{! v.disabledSave }"/>
+    </div>
+</aura:component>

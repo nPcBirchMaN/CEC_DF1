@@ -1,0 +1,74 @@
+<apex:page controller="CancelOrderItemMailController">
+    <style>
+    body {
+        font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+        font-size: 11px;
+    }
+    ul { 
+        list-style: none; 
+   	}
+        
+    li:before {
+    	content: "-";
+    	display: block;
+    	float: left;
+    	width: 1.2em;
+	}
+    #content-message {
+    
+    }
+        
+    #signature {
+    
+    }
+        
+    #post-signature {
+    	color:gray;
+        font-size:8px;
+    }
+    </style>
+    
+    <div id="content-message">
+        <p>
+            Benvolgut/da
+        </p>
+        
+        <p>
+            T'enviem aquest correu per comunicar-te que la teva inscripció a les següents activitats ha estat cancel·lada:    
+        </p>
+        <apex:repeat value="{!productList}" var="product">
+        	<ul>
+        		<li>{!product}</li>
+        	</ul>
+        </apex:repeat>
+        <p>
+            Per a qualsevol dubte o aclariment t'agrairem que et posis en contacte amb <a href="mailto:atenciosoci@cec.cat">atenciosoci@cec.cat</a>
+        </p>
+        
+        <p style="margin-top:30px;">
+            Salutacions cordials,
+        </p>
+    </div>
+	
+	<div id="signature">
+        <apex:image url="https://cec.cat/wp-content/uploads/2018/07/CEC-Logo.png" width="25%"/>
+		<p>
+            Paradís, 10 · 08002 Barcelona <br/>
+            Tel. 933 152 311 <br/>
+        </p>
+        <apex:outputLink value="https://www.cec.cat" id="theLink" target="_blank">www.cec.cat</apex:outputLink>
+	</div>
+    
+    
+    <div id="post-signature">
+        <p>
+        	Aquest missatge s’adreça exclusivament a qui va destinat i pot contenir informació privilegiada o confidencial i dades de caràcter personal, la difusió de les quals és regulada per la Llei orgànica de protecció de dades i la Llei de serveis de la societat de la informació. Si no sou la persona destinatària indicada (o la responsable de lliurar-lo a qui va destinat), no heu de copiar aquest missatge ni lliurar-lo a tercers per cap concepte. Si heu rebut aquest missatge per error o l’heu aconseguit per altres mitjans, us demanem que ens ho comuniqueu immediatament per aquesta mateixa via i l’elimineu irreversiblement. 
+    	</p>
+    
+    	<p>
+        	Abans d’imprimir aquest missatge electrònic penseu en el medi ambient.
+    	</p>
+    </div>
+    
+    
+</apex:page>

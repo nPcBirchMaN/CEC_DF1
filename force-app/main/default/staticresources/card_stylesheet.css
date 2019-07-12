@@ -1,0 +1,56 @@
+ @page{
+    size:landscape;
+    margin:0.25in;
+}
+
+.container {
+    border: 1px solid red;
+    max-height:184px;
+    min-height:184px;
+    max-width: 330px;
+    min-width: 330px;
+    margin:0px;
+    padding:0px;
+}
+
+.soci-info {
+    margin-right: 15px;
+    max-width:235px;
+    min-width:235px;
+}
+
+.soci-id {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size:15px !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.soci-name {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size:15px !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+.qr {    
+    position: relative !important;
+	left:250px;
+    top:100px;
+    padding:0;
+    margin:0;
+    max-width:64px;
+    min-width:64px;
+}
+
+.soci-container {
+    position:absolute !important;
+    bottom:10px;
+    left:10px;
+    padding:0;
+    padding-left:5px;
+    margin:0;
+    max-width: 240px;
+    min-width: 240px;
+}
+

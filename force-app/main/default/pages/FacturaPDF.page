@@ -1,0 +1,201 @@
+<apex:page standardController="Factura__c" extensions="ExtensionFacturaPDF" renderAs="pdf">
+    <div style="font-size:14px;font-family:sans-serif;">
+        
+        <div >  
+            
+            <apex:image url="https://cec.cat/wp-content/uploads/2018/07/CEC-Logo.png" width="29%" height="29%"/> 
+        </div>
+        <div >       
+            <table style="margin-left:25px;margin-top:10px;margin-bottom:5px;"> 
+                <tr>
+                    <td style="width:800px;"> </td>
+                    <td style="width:300px;"> <apex:outputPanel rendered="{!Factura__c.Cliente__r.Cuenta_empresa__c}">{!Factura__c.Cliente__r.Name} </apex:outputPanel>{!Factura__c.Cliente__r.FirstName}&nbsp;{!Factura__c.Cliente__r.LastName}</td>
+                </tr>
+                <tr>     
+                    <td></td>
+                    <td>{!Factura__c.Direcci_n__c}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{!Factura__c.Cliente__r.C_digo_postal__c}&nbsp;{!Factura__c.Cliente__r.Provincia_texto__c}</td>
+                </tr>     
+            </table>
+            
+        </div> 
+        <div>
+            <table style="margin-left:25px;margin-top:30px;">
+                <tr>
+                    <td style="witdth:650px;">Paradís, 10</td>
+                    <td></td>
+                    <td><u><apex:outputPanel rendered="{!Factura__c.Cliente__r.Cuenta_empresa__c}">CIF&nbsp;{!Factura__c.Cliente__r.N_mero_de_CIF__c}</apex:outputPanel>{!Factura__c.Cliente__r.N_mero_de_Documento__pc}</u></td>
+                </tr>
+                <tr>
+                    <td>08002 BARCELONA</td>
+                </tr>
+                <tr>
+                    <td>__________________________________________________________</td>
+                </tr>
+                <tr>
+                    <td>933 152 311</td>
+                </tr>
+            </table>
+        </div>
+        <div style="margin-left:25px;">
+            <table>
+                <tr>
+                    <td style="width:455px">NIF G08944209</td>
+                    <td><apex:outputText value="{0,date,dd'/'MM'/'yyy }">
+                        Barcelona,&nbsp;<apex:param value="{!Factura__c.Fecha_emisi_n_factura__c}" /> 
+                        </apex:outputText></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align:right;">Nº Factura:&nbsp;{!Factura__c.Referencia__c}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align:right;">{!Factura__c.Tipo_de_Factura__c}</td>
+                </tr>
+            </table>
+            
+        </div>
+        
+        <p style="text-align:center;">
+            __________________________________________________________________________________
+        </p>
+        <div style="margin-left:20px;padding:10px;padding-bottom:10px;">
+            <Table>
+                <tr>
+                    <th style="width:650px;">CONCEPTE</th>
+                    <th style="width:200px;text-align:center;">QUANTITAT</th>
+                    <th style="width:200px;text-align:center;">P. UNITARI</th> 
+                    <th style="width:200px;text-align:center;">IMPOSTOS</th> 
+                    <th style="width:200px;text-align:center;">P. TOTAL</th>
+                </tr>
+                
+                <apex:repeat value="{!lineasfactura}" var="linea">
+                    <tr >
+                        <td>{!IF(linea.Nombre_alternativo__c <> null, linea.Nombre_alternativo__c,linea.Producto__r.Name)}</td>
+                        <td style="width:200px;text-align:center;">{!linea.Cantidad__c}</td>
+                        <td style="width:200px;text-align:center;">
+                            <apex:outputField value="{!linea.Precio_unitario_sin_impuestos__c}"/>
+                        </td> 
+                        <td style="width:200px;text-align:center;">{!linea.Impuesto_texto__c}</td> 
+                        <td style="width:200px;text-align:center;">
+                            <apex:outputField value="{!linea.Importe_sin_impuestos__c}"/>
+                        </td>
+                    </tr>
+                </apex:repeat>     
+            </Table>
+            <div style="margin-top:20px;">
+                <table>
+                    <tr>
+                        <td>{!Factura__c.Id_de_Oportunidad__r.Nombre_fotograf_a__c}</td>
+                    </tr>
+                    <tr>
+                        <td>{!Factura__c.Id_de_Oportunidad__r.Nombre_exposici_n__c}</td>
+                    </tr>
+                </table>  
+            </div>
+            
+        </div>
+        <p style="text-align:right;margin-right:25px">
+            _____________________________________
+        </p>
+        <div style="margin-left:200px;">
+            <table style="">
+                <tr>
+                    <td style="min-width:150px;max-width:150px;"></td>
+                    <td style="min-width:150px;max-width:150px;text-align:center;">TOTAL B.I.</td>
+                    <td style="min-width:150px;max-width:150px;text-align:right;">
+                        <apex:outputField value="{!Factura__c.Base_imposable__c}"/>€
+                    </td>
+                </tr> 
+                
+                <apex:outputPanel rendered="{!Factura__c.IVA_0_YES__c}">
+                    <tr>
+                        <td style="min-width:150px;max-width:150px;">
+                            Base&nbsp; <apex:outputField value="{!Factura__c.Base_imp_IVA_0__c}"/>€
+                        </td>
+                        <td style="min-width:150px;max-width:150px;text-align:center;">IVA 0%*</td>
+                        <td style="min-width:150px;max-width:150px;text-align:right;">0&nbsp;€</td>
+                    </tr>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!Factura__c.IVA_4_YES__c}">
+                    <tr>
+                        <td style="min-width:150px;max-width:150px;">
+                            Base&nbsp;<apex:outputField value="{!Factura__c.Base_imp_IVA_4__c}"/>€
+                        </td>
+                        <td style="min-width:150px;max-width:150px;text-align:center;">IVA 4%</td>
+                        <td style="min-width:150px;max-width:150px;text-align:right;">
+                            <apex:outputField value="{!Factura__c.IVA_4__c}"/>€
+                        </td>
+                    </tr> 
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!Factura__c.IVA_10_YES__c}">
+                    <tr>
+                        <td style="min-width:150px;max-width:150px;">
+                        	Base&nbsp;<apex:outputField value="{!Factura__c.Base_imp_IVA_10__c}"/>€
+                        </td>
+                        <td style="min-width:150px;max-width:150px;text-align:center;">IVA 10%</td>
+                        <td style="min-width:150px;max-width:150px;text-align:right;">
+                            <apex:outputField value="{!Factura__c.IVA_10__c}"/>€
+                        </td>
+                    </tr> 
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!Factura__c.IVA_21_YES__c}">
+                    <tr>
+                        <td style="min-width:150px;max-width:150px;">
+                            Base&nbsp;<apex:outputField value="{!Factura__c.Base_imp_IVA_21__c}"/>€
+                        </td>
+                        <td style="min-width:150px;max-width:150px;text-align:center;">IVA 21%</td>
+                        <td style="min-width:150px;max-width:150px;text-align:right;">
+                            <apex:outputField value="{!Factura__c.IVA_21__c}"/>€
+                        </td>
+                    </tr> 
+                </apex:outputPanel>
+                <tr>
+                    <td style="min-width:150px;max-width:150px;"></td>
+                    <th style="min-width:150px;max-width:150px;font-size:14px;padding-top:7px;text-align:center;">TOTAL</th>
+                    <th style="min-width:150px;max-width:150px;text-align:right;font-size:14px;padding-top:7px;">
+                        <apex:outputField value="{!Factura__c.Importe_total_factura__c}"/>€
+                    </th>
+                </tr>
+            </table>         
+        </div>
+        <div style="margin-top:10px;margin-left:50px">
+            <apex:outputPanel rendered="{!Factura__c.IVA_0_YES__c}">
+                <p>
+                    {!$Label.LeyExentoIVA}
+                </p>
+            </apex:outputPanel>       
+        </div>
+        <div>
+            <table style="margin-top:10px;margin-left:50px;">
+                
+                <tr>
+                    <th >VENCIMENT &nbsp;<apex:outputText value="{0,date,dd'/'MM'/'yyy }">
+                        <apex:param value="{!Factura__c.Fecha_vencimiento__c}" /> 
+                        </apex:outputText></th>
+                </tr>
+                <tr>
+                    <td style="padding-top:7px;">{!Factura__c.obs__c}</td>
+                </tr>
+                <tr>
+                    <td style="padding-top:7px;padding-bottom:10px;">{!Factura__c.LabelFormaPago__c}&nbsp;<apex:outputText value="{!Factura__c.IBAN__c}" rendered="{!Factura__c.LabelFormaPago__c = 'Transferència'}" />  </td>
+                </tr>
+                
+            </table>
+        </div> 
+    </div>
+    <div style="font-size:11px;margin-left:10px;marign-top:20px;font-family:sans-serif;">
+        <p>
+            De conformitat amb allò que estableix la Llei Orgànica 15/1999, l'informem que les seves dades seran incorporades a un fitcher informatizat sota la responsabilitat del CENTRE EXCURSIONISTA DE CATALUNYA, amb la finalitat de poder atendre els compromisos derivats de la relació que mantenim amb vosté.<br/>Pot exercir el seu dret d'accés, cancel.lació i oposició mitjançant un escrit a la nostra adreça:<br/>carrer Paradís núm. 10 08002 BARCELONA
+        </p>
+    </div>
+    
+    
+    
+    
+    
+</apex:page>

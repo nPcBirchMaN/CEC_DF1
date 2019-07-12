@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>formato_compacto</fullName>
+    <fields>Name</fields>
+    <fields>Material__c</fields>
+    <fields>Socio__c</fields>
+    <fields>devuelto__c</fields>
+    <fields>Fecha_inicio__c</fields>
+    <fields>Fecha_Fin__c</fields>
+    <label>formato compacto</label>
+</CompactLayout>

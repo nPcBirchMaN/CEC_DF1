@@ -1,0 +1,89 @@
+<apex:page standardcontroller="Product2" applyBodyTag="false" renderAs="pdf">
+    <head>
+        <style>
+            @page{
+                size: A4 landscape;
+            }
+			
+            body {
+            	font-family: Arial, Helvetica, sans-serif;
+            }
+            
+			table {
+				border-collapse: collapse;
+            	width:100%;
+			}            
+            
+            table, th, td {
+  				border: 1px solid black;
+			}
+            
+            th.table-header {
+            	text-align:center;
+            }
+            
+            th.info-header {
+            	width:30%;
+            }
+            
+            td.data-cell {
+            	
+            }
+        </style>
+    </head>
+    
+    <table>
+    	<tr>
+        	<th class="table-header" colspan="2">DADES DE L'ACTIVITAT</th>
+        </tr>
+        <tr>
+        	<th class="info-header">TÍTOL:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Name}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">DATA INICI:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Fecha_de_inicio__c}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">DATA FINAL:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Fecha_de_fin__c}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">CATEGORIES:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Categor_a__c}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">TIPOLOGIA:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Tipologia__c}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">GRAU DE DIFICULTAT:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Grado_de_dificultad__c}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">COORDINADA PER:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Coordinada_por__c}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">DESCRIPCIÓ INTRODUCTÒRIA:</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Description}"/></td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">DESCRIPCIÓ COMPLETA:</th>
+            <td class="data-cell"><apex:outputText escape="false" value="{!Product2.Descripci_n_completa__c}"/> </td>
+        </tr>
+        
+        <tr>
+        	<th class="info-header">DADES DE TROBADA</th>
+            <td class="data-cell"><apex:outputField value="{!Product2.Datos_de_encuentros__c}"/></td>
+        </tr>
+    </table>
+</apex:page>

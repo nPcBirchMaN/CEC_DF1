@@ -1,0 +1,19 @@
+<aura:component controller="SendRemittanceController">
+    <aura:attribute name="email" type="String" />
+    <aura:attribute name="dueDate" type="Date" />
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="4">
+            <lightning:input type="date" aura:id="dateInput" label="Fecha" value="{! v.dueDate }" required="true"/>
+        </lightning:layoutItem>
+        
+        <lightning:layoutItem padding="around-small" size="8">
+            <lightning:input type="email" label="Email" placeholder="exemple@domini.com" aura:id="emailInput" value="{! v.email }" required="true"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+    	
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="4">
+            <lightning:button variant="brand" label="Enviar remesa" onclick="{! c.sendRemittance }"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>

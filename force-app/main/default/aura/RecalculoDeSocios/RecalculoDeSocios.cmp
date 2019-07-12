@@ -1,0 +1,20 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="RecalculoDeSociosAC" >
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="message" type="String"/>
+    <div>
+        <H1>
+            <center>
+                ¿DESEA REALIZAR EL CALCULO AUTOMÁTICO DE LOS Nº DE SOCIO?
+            </center>
+        </H1>
+    </div>
+    <div>
+        <center>
+            <lightning:button class='Button' label="RECALCULAR"  variant="brand" onclick="{!c.RecalcularSO}" />
+        </center>
+    </div>
+    <div>
+            <p>Mensaje: {!v.message}</p>
+    </div>
+    
+</aura:component>

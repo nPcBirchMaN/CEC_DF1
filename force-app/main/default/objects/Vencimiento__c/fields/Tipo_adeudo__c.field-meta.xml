@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tipo_adeudo__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>FRST - FIRST
+RCUR - RECURRENTE
+FNAL - FINAL
+OOFF - ÚNICO</inlineHelpText>
+    <label>Tipo adeudo</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FRST</fullName>
+                <default>false</default>
+                <label>FRST</label>
+            </value>
+            <value>
+                <fullName>RCUR</fullName>
+                <default>true</default>
+                <label>RCUR</label>
+            </value>
+            <value>
+                <fullName>FNAL</fullName>
+                <default>false</default>
+                <label>FNAL</label>
+            </value>
+            <value>
+                <fullName>OOFF</fullName>
+                <default>false</default>
+                <label>OOFF</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

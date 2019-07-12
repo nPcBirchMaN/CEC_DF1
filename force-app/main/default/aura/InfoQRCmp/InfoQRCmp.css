@@ -1,0 +1,13 @@
+.THIS .qrList {
+    max-height:200px !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.THIS .title {
+    font-size:1.5rem;
+}
+
+.THIS .text {
+    font-size:1.2rem;
+}

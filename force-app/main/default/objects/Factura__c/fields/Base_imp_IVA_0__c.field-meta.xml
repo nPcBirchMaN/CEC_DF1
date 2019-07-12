@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Base_imp_IVA_0__c</fullName>
+    <externalId>false</externalId>
+    <label>Base imp. IVA 0%</label>
+    <summarizedField>L_neas_de_factura__c.Importe_sin_impuestos__c</summarizedField>
+    <summaryFilterItems>
+        <field>L_neas_de_factura__c.Tipo_de_impuesto__c</field>
+        <operation>equals</operation>
+        <value>0% Tasa Cero, 0% Tasa Cero, Exenta, No aplicar</value>
+    </summaryFilterItems>
+    <summaryForeignKey>L_neas_de_factura__c.Factura__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

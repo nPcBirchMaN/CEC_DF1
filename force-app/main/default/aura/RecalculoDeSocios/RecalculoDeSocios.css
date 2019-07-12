@@ -1,0 +1,11 @@
+.THIS {
+    font-size: 130%;
+}
+
+.THIS .Button{
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    font-size: 20px;
+}

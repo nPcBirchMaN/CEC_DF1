@@ -1,0 +1,26 @@
+<aura:component controller="InfoSocisAppController">
+    <aura:attribute name="recordId" type="String" default=""/>
+    <aura:attribute name="qrInfoList" type="List" default=""/>
+    
+   	<aura:handler name="change" value="{!v.recordId}" action="{!c.loadQRInfoList}"/>
+
+    <lightning:card>
+        <aura:set attribute="title">
+            <lightning:icon iconName="standard:date_input" size="small"/>
+            <span style="padding-left:1rem;"> Información </span>
+        </aura:set>
+        
+        <div class="qrList" style="padding-left:1rem;">
+            <aura:iteration items="{!v.qrInfoList}" var="qrInfo">               
+                <div class="demo-only" style="width: 30rem;margin-bottom:1rem;">
+                    <article class="slds-tile">
+                        <h1 class="title">{! qrInfo.Name }</h1>
+                            <h3 class="text"><strong>Fecha de inicio: </strong> <span>{! qrInfo.Fecha_inicio__c }</span></h3>
+                            <h3 class="text"><strong>Fecha de finalización: </strong> <span>{! qrInfo.Fecha_fin__c }</span></h3>
+                    </article>
+                </div>
+                
+            </aura:iteration>  
+        </div>
+    </lightning:card>  
+</aura:component>

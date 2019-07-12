@@ -1,0 +1,27 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="BajaAutomaticaController" >
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="listaValores" type="String[]"/><!-- default="Defunción, Económicos, No hago uso, Salud, Otros" -->
+    <aura:attribute name="valorEscogido" type="String"/>
+    <aura:attribute name="message" type="String"/>
+    <aura:handler name="init" value="{! this }" action="{! c.loadOptions }"/>
+    
+    <H1>¿Quiere dar de baja esta cuenta?</H1>
+    <div>
+        <lightning:combobox aura:id="selectItem" name="motivo" label="Motivo:"
+                        placeholder="Seleccionar motivo"
+                        value="{!v.valorEscogido}"
+                        required="true"
+                        dropdownAlignment="right"
+                        variant="standard"
+                        messageWhenValueMissing="Debe escoger un valor"
+                        options="{!v.listaValores}"/>
+    </div>
+    <br/>
+    <div>
+        <lightning:button label="Dar de Baja a futuro" iconName="utility:thunder" iconPosition="right" variant="brand" onclick="{!c.DardeBaja}" />
+        <lightning:button label="Dar de Baja instantanea" iconName="utility:thunder" iconPosition="right" variant="brand" onclick="{!c.DardeBajaI}" />
+    </div>
+    <br/>
+    <p>Mensaje: {!v.message}</p>
+    
+</aura:component>

@@ -1,0 +1,99 @@
+<apex:page controller="NotifyUserTemplateController">
+    <html>
+        <head>
+            <style>
+                body {
+                	font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; 
+                }
+                
+                .primary-color {
+                	color:#009972 
+                }
+                
+                .container {
+                	text-align:justify;
+                	margin-top: 1rem;
+                	margin-bottom: 1rem;
+                }
+                
+                .c-header {
+                	text-align:justify;
+                	margin-top: 0 rem !important;
+                	margin-bottom: 1rem;
+                }
+                
+                :link { color: #0000EE; }
+                :visited { color: #551A8B; }
+                
+            </style>
+        </head>
+        <body>
+            <div class="container c-header">
+                <b class="primary-color">Benvingut/uda al Centre Excursionista de Catalunya!</b>
+            </div>
+            
+            <div class="container">
+                
+            </div>
+            
+            <div class="container">
+                <p>
+            		La teva alta com a soci/sòcia ha estat correctament enregistrada i s’ha activat el teu compte d’usuari al <a href="http://www.cec.cat/">web</a>. Ara ja pots inscriure’t, amb el descompte de soci, a totes les activitats, viatges i cursos que el CEC ofereix.
+                </p>
+			</div>
+            
+            <div class="container">
+                <p>
+                    <b>Usuari: </b> {!username}
+            		<br/>
+            		<b>Contrasenya: </b> {!password}
+                </p>
+                
+            </div>
+            
+            <div class="container">
+                <p>
+                    Per canviar la contrasenya segueix els següents passos:
+                </p>
+                
+                <ol>
+                    <li>Clica <a href="https://www.cec.cat/el-meu-compte/contrasenya-perduda/">aquí</a> i introdueix el teu usuari</li>
+                    <li>Seguidament rebràs un correu electrònic amb un enllaç per reinicialitzar la contrasenya </li>
+                    <li>Clica a l’enllaç i introdueix una contrasenya nova </li>
+                </ol>
+                
+                <p>
+                    Per a qualsevol dubte pots dirigir-te a <a href="mailto:atenciosoci@cec.cat" target="_top">atenciosoci@cec.cat</a> / Tel. <a href="tel:+34933152311">933 152 311</a>
+                </p>
+            </div>
+            
+            <div class="container">
+                <p>
+                    Moltes gràcies per fer-te soci del CEC!
+                </p>
+                
+                <p>
+                    Salutacions cordials,
+                </p>
+                
+                <apex:image url="https://cec.cat/wp-content/uploads/2018/07/CEC-Logo.png" width="248" height="100"/>
+                
+                <p>
+                    Paradís, 10 · 08002 Barcelona
+                </p>
+                <p>
+                    Tel. <a href="tel:+34933152311">933 152 311</a>
+                </p>
+                <p>
+                    <a href="www.cec.cat" target="_top">www.cec.cat</a>
+                </p>
+            </div>
+            
+        </body>
+    </html>
+    
+    
+    
+    
+    
+</apex:page>

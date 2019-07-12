@@ -1,0 +1,9 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="ProductSynchro">
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="message" type="String"/>
+    <div>
+       <lightning:button label="Finalizar pedido" onclick="{!c.FinishOrder}" />
+    </div>
+    <br/>
+    <p>{!v.message}</p>
+</aura:component>

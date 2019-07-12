@@ -1,0 +1,8 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="MailToVocal">
+	<aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="message" type="String"/>
+    <div>
+       <lightning:button label="Enviar inscritos al Vocal" onclick="{!c.Mail2Vocal}"/>
+    </div>
+    <p>{!v.message}</p>
+</aura:component>

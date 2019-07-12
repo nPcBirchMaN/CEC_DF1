@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CC_IBAN__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ISBLANK(Cliente__r.Cuenta_corriente__c), &quot;&quot;,&quot;CC: &quot;+Cliente__r.Cuenta_corriente__c) 
+&amp;
+IF( ISBLANK(Cliente__r.IBAN__c), &quot;&quot;,&quot;IBAN: &quot;+Cliente__r.IBAN__c)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CC/IBAN</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

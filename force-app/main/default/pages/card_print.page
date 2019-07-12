@@ -1,0 +1,21 @@
+<apex:page standardController="Account" extensions="ImpresionCarnetExtension" renderAs="pdf"> 
+    <apex:stylesheet value="{!URLFOR($Resource.card_stylesheet)}"/> 
+    
+    <div class="container">
+        <div class="soci-container">
+            <div class="soci-info">
+                <p class="soci-id">  
+                    ID Soci/a <strong>{! Account.ID_Cliente__c }</strong>
+                </p> 
+                <p class="soci-name">  
+                    <strong>{! Account.Name }</strong>
+                </p>
+            </div>
+        </div>
+        
+        <img class="qr" src="/servlet/servlet.FileDownload?file={! AttachmentId }"/> 
+        
+        
+    </div> 
+    
+</apex:page>
