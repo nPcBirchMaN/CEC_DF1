@@ -107,8 +107,39 @@ global with sharing  class ProductSynchro {
             producto.Estados__c = 'Cancelada';
             producto.IsActive = False;
             producto.Plazas_disponibles__c = 0;
+            
+            
+            
+            //Buscamos las listas de precios para el producto a sincronizar
+            List<PricebookEntry> priceBookList = [SELECT id, Pricebook2Id,Product2Id,ProductCode,UnitPrice,UseStandardPrice, Pricebook2.Name, Pricebook2.IsActive 
+                                                  FROM PricebookEntry WHERE Product2Id =: ProdId];
+            /************************* Creamos la cabecera para la integración *******************************/
+            //Si ya tenemos el webkul_wws__woo_Post_id__c relleno, es que vamos a hacer una actualización
+            String idProducto = (producto.webkul_wws__woo_Post_id__c == null) ? '' : String.valueOf(producto.webkul_wws__woo_Post_id__c);
+            System.debug('idProductoC '+idProducto);
+            //POST cuando se cree nuevo producto/ PUT para actualizar producto
+            String strHttpMethod = (idProducto == '') ? 'POST' : 'PUT';
+            //System.debug('strHttpMethod '+strHttpMethod);
+            String strParam = '?consumer_key=' + Label.consumer_key + '&consumer_secret=' + Label.consumer_secret;
+            String strEndPoint = Label.strEndPoint + 'products/';
+            //en caso de PUT, se la añade el PostId de wooCommerce en la url
+            strEndPoint = strEndPoint + idProducto;
+            //System.debug('strEndPoint '+strEndPoint);
+            //Rellenamos el productData con toda la información obtenida mediante query
+            productData = CECProductsAPI.RellenarProductDataDesdeProducto(producto, priceBookList, Modo);
+            String strBody=JSON.serialize(productData, true);
+            String stringBody=JSON.serialize(productData, true);
+            Boolean isVirtual = (producto.Product_type__c == 'merchandising') ? false : true;
+            strBody = strBody.substringBeforeLast('}');
+            strBody = strBody + ',\"virtual\": \"'+isVirtual+'\"}';
+            System.debug('strBodyC '+strBody);
+            /************************* Llamada a la API *******************************/
+            responseBody = birchAPI.callAPI(strHttpMethod, strBody, strParam,strEndPoint,credentialList);
+            System.debug('responseBodyC '+responseBody);
+            
             producto.Name = 'Anul·lada ' + producto.Name;
             database.update (producto);
+            
             Date fechaInicio = producto.Fecha_de_inicio__c;
             Date fechaFin = producto.Fecha_de_fin__c;
             Datetime fechaInicioDate = (fechaInicio != null)? DateTime.newInstance(fechaInicio.year(), fechaInicio.month(), fechaInicio.day()) : null;

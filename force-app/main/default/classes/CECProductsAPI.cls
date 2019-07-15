@@ -107,7 +107,7 @@ public class CECProductsAPI
             productData.tax_class = producto.tax_class__c;
             
             if (producto.webkul_wws__woo_Post_id__c == null) {
-                productData.manage_stock = (producto.Plazas_totales__c != null) ? true : false;
+                productData.manage_stock = (producto.Plazas_totales__c != null) ? true : false;                
             	productData.stock_quantity = producto.Plazas_totales__c;
                 productData.sku = producto.ProductCode;
             }
@@ -201,6 +201,7 @@ public class CECProductsAPI
             //productData.status = 'draft';
             //Añadimos al nombre de la actividad la palabra 'Anulada'
             productData.name = 'Anul·lada '+producto.Name;
+            productData.stock_quantity = 0;            
             //Insertamos los roles que no podrán comprar el producto
             CECProductsAPI.UserRoleData userRoleData = new CECProductsAPI.UserRoleData();
             userRoleData.customer = '1';
